@@ -448,5 +448,14 @@
 		"position_name": "aliquet odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis",
 		"department": "nulla. Integer vulputate, risus a ultricies adipiscing, enim mi tempor",
 		"hire_date": "Dec 15, 2020"
+	},
+	{
+		"name": "Настя Ляпина",
+		"phone": "+79166198852",
+		"email": "lyapindm@yandex.ru",
+		"address": "MO, Stupino",
+		"position_name": "aliquet odio. Etiam ligula tortor, dictum eu, placerat eget, venenatis",
+		"department": "nulla. Integer vulputate, risus a ultricies adipiscing, enim mi tempor",
+		"hire_date": "Dec 15, 2020"
 	}
 ]

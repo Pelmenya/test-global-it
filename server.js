@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 const path = require('path');
+const { async } = require('rxjs');
 
 const fastify = require('fastify')({ logger: true });
 
@@ -18,30 +19,31 @@ fastify.register(require("@fastify/view"), {
 	root: path.join(__dirname, "views"),
   });
 
+fastify.get('/', async (req, res) => {
+	return await res.view('index', { title: 'Задача 30080' })
+});
 
-fastify.get('/', async (request, reply) => {
+
+fastify.get('/users', (req, res) => {
 	fs.readFile('./users.json', 'utf8', (err, data) => {
 		if (err) {
 			console.log('File read failed:', err);
 			return;
 		}
 
-		if(request.query.term)
+		if(req.query.term)
 		{
-			const result = JSON.parse(data).filter((elem)=> elem.name.toLowerCase().search(request.query.term.toLowerCase()) !== -1);
-			reply.send(JSON.stringify(result));
+			const result = JSON.parse(data).filter((elem)=> elem.name.toLowerCase().search(req.query.term.toLowerCase()) !== -1);
+			res.send(result);
 		}
 		else
 		{
-			reply.send(data);
+			res.send(data);
 		}
 
 	})
 });
 
-fastify.get('/index', async (request, res) => {
-	return res.view('index', { title: 'Задача 30080' })
-});
 
 const start = async () => {
   try {

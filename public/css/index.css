@@ -3,8 +3,10 @@
 @import url(./cards/cards.css);
 @import url(./card/card.css);
 
+html,
 body {
     font-family: Proxima Nova Rg, sans-serif;
+    scrollbar-gutter: stable;
 }
 
 .main {
