@@ -4,14 +4,20 @@ const path = require('path');
 
 const fastify = require('fastify')({ logger: true });
 
+fastify.register(require('@fastify/static'), {
+	root: path.join(__dirname, '/public'),
+	prefix: '/public/'
+  })
+
 fastify.register(require('@fastify/cors'), {});
 
 fastify.register(require("@fastify/view"), {
 	engine: {
 	  ejs: require("ejs"),
 	},
-	root: path.join(__dirname, "views"), // Points to `./views` relative to the current file
+	root: path.join(__dirname, "views"),
   });
+
 
 fastify.get('/', async (request, reply) => {
 	fs.readFile('./users.json', 'utf8', (err, data) => {
