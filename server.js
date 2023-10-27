@@ -1,7 +1,17 @@
 const fs = require('fs');
+
+const path = require('path');
+
 const fastify = require('fastify')({ logger: true });
 
-fastify.register(require('fastify-cors'), {});
+fastify.register(require('@fastify/cors'), {});
+
+fastify.register(require("@fastify/view"), {
+	engine: {
+	  ejs: require("ejs"),
+	},
+	root: path.join(__dirname, "views"), // Points to `./views` relative to the current file
+  });
 
 fastify.get('/', async (request, reply) => {
 	fs.readFile('./users.json', 'utf8', (err, data) => {
@@ -23,9 +33,13 @@ fastify.get('/', async (request, reply) => {
 	})
 });
 
+fastify.get('/index', async (request, res) => {
+	return res.view('index', { title: 'Задача 30080' })
+});
+
 const start = async () => {
   try {
-    await fastify.listen(3000)
+    await fastify.listen({ port: 3000})
   } catch (err) {
     fastify.log.error(err);
     process.exit(1);
