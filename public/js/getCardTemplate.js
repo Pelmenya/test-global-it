@@ -13,4 +13,5 @@ const getCardTemplate = (user) => `
                 ${user.email}
             </p>
         </div>
+        <div class="card__overlay"id=${user.email}></div>
     </div>`

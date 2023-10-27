@@ -2,6 +2,7 @@
 @import url(./input/input.css);
 @import url(./cards/cards.css);
 @import url(./card/card.css);
+@import url(./popup/popup.css);
 
 html,
 body {

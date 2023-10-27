@@ -1,6 +1,6 @@
 
 function getStore() {
-    const store = [];
+    let store = [];
     return { store }
 }
 
