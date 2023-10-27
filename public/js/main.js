@@ -1,6 +1,6 @@
 
 let { store } = getStore();
-const { popup } = getPopup();
+const { popup, popupOpen } = getPopup();
 const { fromEvent, debounceTime, map, mergeMap } = rxjs;
 const { ajax } = rxjs.ajax;
 
@@ -31,7 +31,7 @@ function main() {
                 console.log(store)
                 const usersCards = [...document.querySelectorAll('.card')];
                 usersCards.forEach(card => card.addEventListener('click', (e) => {
-                    console.log(e.target.id);
+                    popupOpen(store.find(item => e.target.id === item.email));
                 })) 
             },
             error: (error) => console.log('Error!', error),
