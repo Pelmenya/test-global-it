@@ -1,0 +1,30 @@
+.card {
+    box-shadow: 0px 0px 20px 0px #0000001a;
+    height: 314px;
+    padding: 24px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    cursor: pointer;
+}
+
+.card__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0em;
+    color: #262c40;
+    margin: 0;
+}
+
+.card__property {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #8189a3;
+    margin: 0;
+    margin-left: 16px;
+}
