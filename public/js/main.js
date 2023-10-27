@@ -1,12 +1,12 @@
 
 let { store } = getStore();
+const { popup } = getPopup();
 const { fromEvent, debounceTime, map, mergeMap } = rxjs;
 const { ajax } = rxjs.ajax;
 
 function main() {
     const inputSearchUsers = document.querySelector('.searchInput');
     const resUsers = document.querySelector('.cards');
-    const popup = document.querySelector('.popup');
 
     let usersHTML = '';
 
