@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<%
+_query_str = "for $elem in collaborators return $elem";
+personArray = XQuery(_query_str);
+_elems = ArrayExtract(personArray, 'fullname');
+%>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborators</title>
+</head>
+<body>
+    <%
+    for(i in _elems) {
+    %>
+        <p><%=i%></p>
+    <%
+    }
+    %>
+</body>
+</html>

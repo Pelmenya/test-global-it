@@ -133,3 +133,47 @@ ORDER BY level;
 ![myimage-alt-tag](/время_таблица.jpg)
 
 ### [SQL-script](/test2.sql)
+
+## Тестовое задание №3
+Скачать и установить дистрибутив ПО WebSoft HCM по [ссылке](https://disk.yandex.ru/d/oDFQQTnPrcqRNQ). 
+
+1.	После установки запустите сервер - WebSoft2023.1\WebSoftServer\xHttp_64.exe. Дождитесь надписи Server Started.
+2.	Запустите интерфейс администратора - WebSoft2023.1\WebSoftAdmin\SpXml.exe. Логин/пароль - user1/user1.
+3.	Во вкладке Персонал -> Сотрудники создайте нового сотрудника, задайте ему логин/пароль и ФИО.
+4.	Создайте файл index.html в директории WebSoft2023.1\WebSoftServer\wt\web\
+5.	В файле index.html напишите код, который выводит список сотрудников  (ФИО каждого сотрудника с новой строки). Посмотреть результат можно перейдя на localhost/index.html.
+
+	Таблица с сотрудниками называется - collaborators, нужное поле - fullname. Запрос пишется через xquery. 
+Серверный код вставляется в html код с помощью <% %> тегов. Выводится с помощью <%= %> тегов.
+Ссылка на документацию по ПО - [https://developers.websoft.ru](https://developers.websoft.ru)
+
+## Решение
+
+```
+<!DOCTYPE html>
+<%
+_query_str = "for $elem in collaborators return $elem";
+personArray = XQuery(_query_str);
+_elems = ArrayExtract(personArray, 'fullname');
+%>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborators</title>
+</head>
+<body>
+    <%
+    for(i in _elems) {
+    %>
+        <p><%=i%></p>
+    <%
+    }
+    %>
+</body>
+</html>
+```
+### [index.html](/index.html)
+
+![myimage-alt-tag](/тест3.jpg)
+
