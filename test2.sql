@@ -43,7 +43,7 @@ SELECT
 	sub_name, 
 	subdivision_id sub_id, 
 	level sub_level,
-	COUNT(*) OVER() colls_count
+	COUNT(*) OVER(PARTITION BY sub_name) colls_count
 FROM prod
 GROUP BY 
 	id, 
